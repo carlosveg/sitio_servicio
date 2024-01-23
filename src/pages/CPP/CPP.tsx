@@ -80,7 +80,7 @@ export default function CPP({ title }: { title: string }) {
         <Typography variant='h6' gutterBottom>
           Explicación del programa
         </Typography>
-        {/* <p>
+        <p>
           A continuación, se presenta una explciación detallada del
           funcionamiento de cada una de las partes que componen el programa. En
           el video podrás ver el programa en funcionamiento.
@@ -178,7 +178,7 @@ export default function CPP({ title }: { title: string }) {
           uso y aprovechar al máximo sus capacidades. ¡Disfruta de tu
           experiencia de programación con QtCreator y explora el emocionante
           mundo de la geometría computacional orientada a la física!
-        </p> */}
+        </p>
       </Grid>
       <Sidebar
         title={sidebar.title}
