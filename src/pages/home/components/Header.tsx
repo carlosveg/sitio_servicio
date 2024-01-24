@@ -1,10 +1,9 @@
 import Link from '@mui/material/Link'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
-import * as React from 'react'
-import ipn from '../../../assets/IPN.png'
-import escom from '../../../assets/ESCOM.png'
 import { Link as LinkR } from 'react-router-dom'
+import escom from '../../../assets/ESCOM.png'
+import ipn from '../../../assets/IPN.png'
 
 interface HeaderProps {
   sections: ReadonlyArray<{
@@ -14,11 +13,9 @@ interface HeaderProps {
   title: string
 }
 
-export default function Header(props: HeaderProps) {
-  const { sections, title } = props
-
+export default function Header({ sections, title }: HeaderProps) {
   return (
-    <React.Fragment>
+    <>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Link href='/'>
           <img src={ipn} style={{ height: '50px' }} />
@@ -33,6 +30,7 @@ export default function Header(props: HeaderProps) {
         >
           {title}
         </Typography>
+
         <Link href='/'>
           <img src={escom} style={{ height: '50px' }} />
         </Link>
@@ -48,6 +46,6 @@ export default function Header(props: HeaderProps) {
           </LinkR>
         ))}
       </Toolbar>
-    </React.Fragment>
+    </>
   )
 }
