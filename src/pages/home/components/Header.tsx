@@ -1,9 +1,11 @@
 import Link from '@mui/material/Link'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
-import { Link as LinkR } from 'react-router-dom'
-import escom from '../../../assets/ESCOM.png'
+import * as React from 'react'
 import ipn from '../../../assets/IPN.png'
+import escom from '../../../assets/ESCOM.png'
+import { Link as LinkR } from 'react-router-dom'
+import { FormControlLabel, Switch } from '@mui/material'
 
 interface HeaderProps {
   sections: ReadonlyArray<{
@@ -11,9 +13,16 @@ interface HeaderProps {
     url: string
   }>
   title: string
+  checked: boolean
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export default function Header({ sections, title }: HeaderProps) {
+export default function Header({
+  sections,
+  title,
+  checked,
+  handleChange
+}: HeaderProps) {
   return (
     <>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -30,7 +39,16 @@ export default function Header({ sections, title }: HeaderProps) {
         >
           {title}
         </Typography>
-
+        <FormControlLabel
+          control={
+            <Switch
+              checked={checked}
+              onChange={handleChange}
+              inputProps={{ 'aria-label': 'controlled' }}
+            />
+          }
+          label={`Modo ${checked ? 'oscuro' : 'claro'}`}
+        />
         <Link href='/'>
           <img src={escom} style={{ height: '50px' }} />
         </Link>

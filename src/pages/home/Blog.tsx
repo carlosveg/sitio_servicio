@@ -6,16 +6,17 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Grid from '@mui/material/Grid'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Route, Routes } from 'react-router-dom'
-import CGAL from '../CGAL/CGAL'
-import CPP from '../CPP/CPP'
-import FreeCAD from '../FreeCAD/FreeCAD'
-import OneLab from '../OneLab/OneLab'
-import QtCreator from '../QtCreator/QtCreator'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Main from './components/Main'
 import { texts } from './components/main-text'
 import Sidebar from './components/Sidebar'
+import CPP from '../CPP/CPP'
+import QtCreator from '../QtCreator/QtCreator'
+import CGAL from '../CGAL/CGAL'
+import FreeCAD from '../FreeCAD/FreeCAD'
+import OneLab from '../OneLab/OneLab'
+import { useState } from 'react'
 
 const sections = [
   { title: 'Inicio', url: '/' },
@@ -59,13 +60,26 @@ function NoMatch() {
 }
 
 export default function Blog() {
-  const defaultTheme = createTheme({})
+  const [checked, setChecked] = useState(false)
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked)
+  }
+
+  const defaultTheme = createTheme({
+    palette: { mode: checked ? 'dark' : 'light' }
+  })
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <Container maxWidth='lg'>
-        <Header title='Página Servicio Social' sections={sections} />
+        <Header
+          title='Página Servicio Social'
+          sections={sections}
+          checked={checked}
+          handleChange={handleChange}
+        />
         <main>
           <Grid container spacing={5} sx={{ mt: 3 }}>
             <Routes>
